@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vil du være min Valentine?</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(180deg, #fff0f5 0%, #ffe4ec 50%, #ffd6e0 100%);
+      padding: 1rem;
+      text-align: center;
+    }
+    h1 {
+      color: #c41e50;
+      font-size: clamp(1.5rem, 5vw, 2.5rem);
+      margin-bottom: 0.5rem;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.08);
+    }
+    .bear-img {
+      max-width: 280px;
+      width: 100%;
+      height: auto;
+      margin: 1rem 0 1.5rem;
+      filter: drop-shadow(0 8px 16px rgba(196, 30, 80, 0.2));
+    }
+    .buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      margin-top: 1rem;
+    }
+    .btn {
+      padding: 14px 32px;
+      font-size: 1.25rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.2s ease;
+      min-width: 100px;
+    }
+    .btn:hover {
+      transform: scale(1.05);
+    }
+    .btn:active {
+      transform: scale(0.98);
+    }
+    .btn-ja {
+      background: linear-gradient(145deg, #e91e63, #c2185b);
+      color: white;
+      box-shadow: 0 4px 14px rgba(233, 30, 99, 0.4);
+    }
+    .btn-ja:hover {
+      box-shadow: 0 6px 20px rgba(233, 30, 99, 0.5);
+    }
+    .btn-nej {
+      background: linear-gradient(145deg, #78909c, #607d8b);
+      color: white;
+      box-shadow: 0 4px 14px rgba(96, 125, 139, 0.3);
+    }
+    .btn-nej:hover {
+      box-shadow: 0 6px 20px rgba(96, 125, 139, 0.4);
+    }
+    .yuppie {
+      font-size: clamp(1.5rem, 6vw, 3rem);
+      color: #c41e50;
+      font-weight: 800;
+      margin-top: 1.5rem;
+      animation: bounce 0.6s ease;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+    .hidden {
+      display: none !important;
+    }
+    .hearts {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .heart {
+      position: absolute;
+      font-size: 1.5rem;
+      color: #e91e63;
+      opacity: 0.5;
+      animation: float 8s ease-in-out infinite;
+    }
+    .heart:nth-child(1) { left: 10%; top: 15%; animation-delay: 0s; animation-duration: 10s; font-size: 1.2rem; }
+    .heart:nth-child(2) { left: 85%; top: 20%; animation-delay: 1s; animation-duration: 9s; font-size: 1.8rem; }
+    .heart:nth-child(3) { left: 25%; top: 70%; animation-delay: 2s; animation-duration: 11s; font-size: 1rem; }
+    .heart:nth-child(4) { left: 75%; top: 65%; animation-delay: 0.5s; animation-duration: 12s; font-size: 1.4rem; }
+    .heart:nth-child(5) { left: 50%; top: 10%; animation-delay: 3s; animation-duration: 8s; font-size: 1.1rem; }
+    .heart:nth-child(6) { left: 15%; top: 50%; animation-delay: 1.5s; animation-duration: 10s; font-size: 1.6rem; }
+    .heart:nth-child(7) { left: 90%; top: 45%; animation-delay: 2.5s; animation-duration: 9s; font-size: 1.3rem; }
+    .heart:nth-child(8) { left: 40%; top: 85%; animation-delay: 0.8s; animation-duration: 11s; font-size: 1.5rem; }
+    .heart:nth-child(9) { left: 60%; top: 25%; animation-delay: 2s; animation-duration: 7s; font-size: 1rem; }
+    .heart:nth-child(10) { left: 5%; top: 80%; animation-delay: 1.2s; animation-duration: 10s; font-size: 1.7rem; }
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+      25% { transform: translate(15px, -20px) scale(1.1); opacity: 0.7; }
+      50% { transform: translate(-10px, 10px) scale(0.95); opacity: 0.5; }
+      75% { transform: translate(20px, 15px) scale(1.05); opacity: 0.6; }
+    }
+  </style>
+</head>
+<body>
+  <div class="hearts" aria-hidden="true">
+    <span class="heart">♥</span>
+    <span class="heart">♥</span>
+    <span class="heart">♥</span>
+    <span class="heart">♥</span>
+    <span class="heart">♥</span>
+    <span class="heart">♥</span>
+    <span class="heart">♥</span>
+    <span class="heart">♥</span>
+    <span class="heart">♥</span>
+    <span class="heart">♥</span>
+  </div>
+  <div style="position: relative; z-index: 1;">
+  <h1>Vil du være min Valentine?</h1>
+  <img class="bear-img" src="assets/bear.png" alt="Valentine bjørn">
+  <div class="buttons">
+    <button type="button" class="btn btn-ja" id="jaBtn">Ja</button>
+    <button type="button" class="btn btn-nej" id="nejBtn">Nej</button>
+  </div>
+  <p class="yuppie hidden" id="yuppie">YUPPIIEEEEE</p>
+  </div>
+
+  <script>
+    const jaBtn = document.getElementById('jaBtn');
+    const nejBtn = document.getElementById('nejBtn');
+    const yuppieEl = document.getElementById('yuppie');
+
+    let jaFontSize = 1.25;  // rem
+    let nejFontSize = 1.25; // rem
+    const minNejSize = 0.5;
+    const maxJaSize = 3;
+    const nejClicksBeforeHide = 5;
+    let nejClicks = 0;
+
+    jaBtn.addEventListener('click', function () {
+      document.querySelector('.buttons').classList.add('hidden');
+      yuppieEl.classList.remove('hidden');
+    });
+
+    nejBtn.addEventListener('click', function () {
+      nejClicks += 1;
+      jaFontSize = Math.min(jaFontSize + 0.25, maxJaSize);
+      nejFontSize = Math.max(nejFontSize - 0.15, minNejSize);
+      jaBtn.style.fontSize = jaFontSize + 'rem';
+      jaBtn.style.padding = (10 + jaFontSize * 4) + 'px ' + (20 + jaFontSize * 8) + 'px';
+      nejBtn.style.fontSize = nejFontSize + 'rem';
+      nejBtn.style.padding = Math.max(6, 10 + nejFontSize * 2) + 'px ' + Math.max(12, 20 + nejFontSize * 4) + 'px';
+      if (nejClicks >= nejClicksBeforeHide) {
+        nejBtn.style.visibility = 'hidden';
+        nejBtn.style.opacity = '0';
+        nejBtn.style.pointerEvents = 'none';
+        nejBtn.style.position = 'absolute';
+        nejBtn.style.width = '0';
+        nejBtn.style.height = '0';
+        nejBtn.style.overflow = 'hidden';
+      }
+    });
+  </script>
+</body>
+</html>
